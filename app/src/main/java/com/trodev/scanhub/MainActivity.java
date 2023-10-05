@@ -66,11 +66,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
 
-/*        *//*set all status bar, navigation bar, toolbar color*//*
-        smoothBottomBar.setBarBackgroundColor(Color.parseColor("#6DB3D1"));
-        getWindow().setNavigationBarColor(Color.parseColor("#6DB3D1"));
-        getWindow().setStatusBarColor(Color.parseColor("#6DB3D1"));*/
-
         /*smooth bar working process*/
         smoothBottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -83,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frameLayout, new HomeFragment());
                     fragmentTransaction.commit();
 
-/*                    *//*set all status bar, navigation bar, toolbar color*//*
-                    smoothBottomBar.setBarBackgroundColor(Color.parseColor("#6DB3D1"));
-                    getWindow().setNavigationBarColor(Color.parseColor("#6DB3D1"));
-                    getWindow().setStatusBarColor(Color.parseColor("#6DB3D1"));*/
-
                 }
                 if (i == 1) {
                     setTitle("History");
@@ -95,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.frameLayout, new HistoryFragment());
                     fragmentTransaction.commit();
-
-
-/*                    smoothBottomBar.setBarBackgroundColor(Color.parseColor("#6DB3D1"));
-                    getWindow().setNavigationBarColor(Color.parseColor("#6DB3D1"));
-                    getWindow().setStatusBarColor(Color.parseColor("#6DB3D1"));*/
                 }
 
                 return false;
@@ -121,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (itemId == R.id.menu_profile) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-            Toast.makeText(this, "user profile", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.menu_privacy) {
             Toast.makeText(this, "privacy policy", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.menu_share) {
@@ -133,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_apps) {
             Toast.makeText(this, "our apps", Toast.LENGTH_SHORT).show();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
