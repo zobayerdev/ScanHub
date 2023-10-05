@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1099244061655",
+    "project_id": "scanhub-9c723",
+    "storage_bucket": "scanhub-9c723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1099244061655:android:2539fd9823a478e38ec192",
+        "android_client_info": {
+          "package_name": "com.trodev.scanhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbKmKPxehYX1Sj6PJWY6M8CfMNO3O23Rc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
