@@ -125,7 +125,7 @@ public class ProductQrActivity extends AppCompatActivity {
 
                 if (makeET.getText().toString().trim().length() + expireET.getText().toString().length()
                         + productET.getText().toString().length() + companyET.getText().toString().length() == 0) {
-                    Toast.makeText(ProductQrActivity.this, "Make sure your given Text..!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductQrActivity.this, "make sure your input isn't blank...!", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         bitmap = textToImageEncode("Manufacture Date:  " + makeET.getText().toString() + "\nExpire Date:  " + expireET.getText().toString().trim() +

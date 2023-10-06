@@ -108,7 +108,7 @@ public class ScanGalleryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (imageUri == null) {
-                    Toast.makeText(ScanGalleryActivity.this, "Pick image first", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScanGalleryActivity.this, "pick image first", Toast.LENGTH_SHORT).show();
                 } else {
                     detectResultFromImage();
                 }
@@ -121,7 +121,7 @@ public class ScanGalleryActivity extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(ScanGalleryActivity.this.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("TextView", resultTv.getText().toString());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(ScanGalleryActivity.this, "Copy successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScanGalleryActivity.this, "copy successful", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -134,7 +134,7 @@ public class ScanGalleryActivity extends AppCompatActivity {
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, s);
                 startActivity(Intent.createChooser(sharingIntent, "Share text via"));
-                Toast.makeText(ScanGalleryActivity.this, "Share Scanning Text", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScanGalleryActivity.this, "share scanning text", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -153,12 +153,12 @@ public class ScanGalleryActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(ScanGalleryActivity.this, "Failed Detect Image due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ScanGalleryActivity.this, "failed detect image due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } catch (Exception e) {
             Log.d(TAG, "detectResultFromImage: ");
-            Toast.makeText(this, "Failed Detect Image " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "failed detect image " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -241,7 +241,7 @@ public class ScanGalleryActivity extends AppCompatActivity {
                 Log.d(TAG, "onActivityResult: Picked image gallery: " + imageUri);
 
             } else {
-                Toast.makeText(ScanGalleryActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScanGalleryActivity.this, "cancelled", Toast.LENGTH_SHORT).show();
             }
         }
     });
@@ -275,7 +275,7 @@ public class ScanGalleryActivity extends AppCompatActivity {
                 imageIv.setImageURI(imageUri);
 
             } else {
-                Toast.makeText(ScanGalleryActivity.this, "Cancelled..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScanGalleryActivity.this, "cancelled..", Toast.LENGTH_SHORT).show();
             }
         }
     });

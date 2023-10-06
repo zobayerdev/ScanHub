@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
                 Toast.makeText(ProfileActivity.this, "log-out successful", Toast.LENGTH_SHORT).show();
-                finish();
+                finishAffinity();
             }
         });
 
