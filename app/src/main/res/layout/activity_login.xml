@@ -10,7 +10,6 @@
     android:scrollbars="none"
     tools:context=".activities.LoginActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +41,6 @@
             android:textAlignment="center"
             android:textColor="@color/color_6"
             android:textSize="50sp" />
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

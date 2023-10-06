@@ -63,5 +63,8 @@ dependencies {
     /*smooth bottom bar*/
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
+    //ml library dependency
+    implementation 'com.google.mlkit:barcode-scanning:17.2.0'
+
 
 }
