@@ -25,16 +25,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Product Name: "
+                android:text="From: "
                 android:textColor="@color/color_6"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/fromTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="product name"
+                android:text="From"
                 android:textColor="@color/color_6"
                 android:textSize="12sp" />
 
@@ -49,16 +49,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Product-info: "
+                android:text="To: "
                 android:textColor="@color/color_6"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/info"
+                android:id="@+id/toTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="qr code information"
+                android:text="to"
                 android:textColor="@color/color_6"
                 android:textSize="12sp" />
 

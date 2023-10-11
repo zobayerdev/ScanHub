@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.trodev.scanhub.activities.ProfileActivity;
+import com.trodev.scanhub.fragments.HistoryFragment;
 
 import java.util.Objects;
 

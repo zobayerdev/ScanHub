@@ -1,4 +1,4 @@
-package com.trodev.scanhub;
+package com.trodev.scanhub.models;
 
 public class QRModels {
 

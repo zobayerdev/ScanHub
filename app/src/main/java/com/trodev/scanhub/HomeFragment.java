@@ -15,13 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.card.MaterialCardView;
+import com.trodev.scanhub.activities.ProductQrActivity;
 import com.trodev.scanhub.activities.ScanGalleryActivity;
 import com.trodev.scanhub.activities.ScannerActivity;
+import com.trodev.scanhub.activities.SmsActivity;
 
 
 public class HomeFragment extends Fragment {
 
-    MaterialCardView product_qr;
+    MaterialCardView product_qr, message;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
 
         /*init views*/
         product_qr = view.findViewById(R.id.product_qr);
+        message = view.findViewById(R.id.message);
 
 
         /*set on click listener*/
@@ -45,8 +48,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goto_message();
+            }
+        });
+
 
         return view;
+    }
+
+    private void goto_message() {
+        startActivity(new Intent(getContext(), SmsActivity.class));
     }
 
     private void goto_product() {
