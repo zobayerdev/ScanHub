@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.card.MaterialCardView;
-import com.trodev.scanhub.activities.ProductQrActivity;
 import com.trodev.scanhub.activities.ScanGalleryActivity;
 import com.trodev.scanhub.activities.ScannerActivity;
 
