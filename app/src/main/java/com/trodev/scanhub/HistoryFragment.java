@@ -13,10 +13,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.trodev.scanhub.R;
 
 public class HistoryFragment extends Fragment {
-
     TabLayout tab;
     ViewPager viewPager;
-
     public HistoryFragment() {
         // Required empty public constructor
     }
@@ -26,12 +24,11 @@ public class HistoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
+        /*init views*/
         tab = view.findViewById(R.id.tab);
         viewPager = view.findViewById(R.id.viewPager);
-
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         viewPager.setAdapter(adapter);
-
         tab.setupWithViewPager(viewPager);
 
         return view;

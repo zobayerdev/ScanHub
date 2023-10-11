@@ -57,7 +57,7 @@ public class ProductQrActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /*database location*/
-        reference = FirebaseDatabase.getInstance().getReference("qr_database").child("product_qr");
+        reference = FirebaseDatabase.getInstance().getReference("QR_DB").child("product_qr");
 
 
         /*init views*/
