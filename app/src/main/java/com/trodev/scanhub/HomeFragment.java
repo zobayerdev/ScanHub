@@ -19,11 +19,12 @@ import com.trodev.scanhub.activities.ProductQrActivity;
 import com.trodev.scanhub.activities.ScanGalleryActivity;
 import com.trodev.scanhub.activities.ScannerActivity;
 import com.trodev.scanhub.activities.SmsActivity;
+import com.trodev.scanhub.activities.WifiQrActivity;
 
 
 public class HomeFragment extends Fragment {
 
-    MaterialCardView product_qr, message;
+    MaterialCardView product_qr, message, wifi;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
         /*init views*/
         product_qr = view.findViewById(R.id.product_qr);
         message = view.findViewById(R.id.message);
+        wifi = view.findViewById(R.id.wifi);
 
 
         /*set on click listener*/
@@ -55,8 +57,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        wifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goto_wifi();
+            }
+        });
+
 
         return view;
+    }
+
+    private void goto_wifi() {
+        startActivity(new Intent(getContext(), WifiQrActivity.class));
     }
 
     private void goto_message() {
