@@ -48,7 +48,7 @@ public class ProductQrFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("QR_DB");
 
         /*init views*/
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.productRv);
         animationView = view.findViewById(R.id.animationView);
         animationView.loop(true);
 

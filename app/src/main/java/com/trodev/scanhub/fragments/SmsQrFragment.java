@@ -27,7 +27,7 @@ import com.trodev.scanhub.models.SMSModels;
 import java.util.ArrayList;
 
 public class SmsQrFragment extends Fragment {
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     DatabaseReference reference;
     ArrayList<SMSModels> list;
     SMSAdapter adapter;
@@ -47,7 +47,7 @@ public class SmsQrFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("QR_DB");
 
         /*init views*/
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerRv);
         animationView = view.findViewById(R.id.animationView);
         animationView.loop(true);
 

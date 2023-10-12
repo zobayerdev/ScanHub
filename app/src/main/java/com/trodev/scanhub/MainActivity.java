@@ -1,23 +1,16 @@
 package com.trodev.scanhub;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.trodev.scanhub.activities.ProfileActivity;
 import com.trodev.scanhub.fragments.HistoryFragment;
-
-import java.util.Objects;
+import com.trodev.scanhub.fragments.ProfileFragment;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
@@ -39,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*init all drawer layout*/
         drawerLayout = findViewById(R.id.drawer_Layout);
-        navigationView = findViewById(R.id.navigation_view);
+        // navigationView = findViewById(R.id.navigation_view);
 
         /*init views*/
         smoothBottomBar = findViewById(R.id.bottombar);
@@ -53,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         // #################################################################
         // navigation view work process
-        navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+/*    navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);*/
 
 
         /*When apps start show HomeFragments*/
@@ -86,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.commit();
                 }
 
+                if (i == 2) {
+                    setTitle("Profile");
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout, new ProfileFragment());
+                    fragmentTransaction.commit();
+                }
+
                 return false;
             }
         });
@@ -93,14 +94,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @SuppressLint("NonConstantResourceId")
+/*    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         int itemId = item.getItemId();
 
         if (itemId == R.id.menu_profile) {
@@ -117,6 +117,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "our apps", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }

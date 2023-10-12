@@ -46,7 +46,7 @@ public class WifiQrFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("QR_DB");
 
         /*init views*/
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.wifiRv);
         animationView = view.findViewById(R.id.animationView);
         animationView.loop(true);
 

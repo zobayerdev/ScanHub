@@ -28,7 +28,7 @@ public class HistoryFragment extends Fragment {
         /*init views*/
         tab = view.findViewById(R.id.tab);
         viewPager = view.findViewById(R.id.viewPager);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
 
