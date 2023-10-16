@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -183,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="qr download"
                     android:textAllCaps="false"
                     android:textSize="10sp" />
@@ -194,12 +195,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="card download"
                     android:textAllCaps="false"
                     android:textSize="10sp" />
 
-                <Button
+<!--                <Button
                     android:id="@+id/generate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -208,7 +209,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="generate qr"
                     android:textAllCaps="false"
-                    android:textSize="10sp" />
+                    android:textSize="10sp" />-->
 
             </LinearLayout>
 

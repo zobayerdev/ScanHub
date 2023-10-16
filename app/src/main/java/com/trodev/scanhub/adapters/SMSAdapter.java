@@ -1,6 +1,7 @@
 package com.trodev.scanhub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.trodev.scanhub.ProductQrFullActivity;
 import com.trodev.scanhub.R;
+import com.trodev.scanhub.SmsQrFullActivity;
 import com.trodev.scanhub.models.SMSModels;
 
 import java.util.ArrayList;
@@ -44,6 +47,19 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
         holder.to.setText(models.getTo());
         holder.time.setText(models.getTime());
         holder.date.setText(models.getDate());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, SmsQrFullActivity.class);
+                intent.putExtra("mFrom", models.getFrom());
+                intent.putExtra("mTo", models.getTo());
+                intent.putExtra("mText", models.getSms());
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
