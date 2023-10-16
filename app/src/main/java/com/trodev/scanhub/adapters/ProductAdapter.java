@@ -1,14 +1,17 @@
 package com.trodev.scanhub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.trodev.scanhub.ProductQrFullActivity;
 import com.trodev.scanhub.models.QRModels;
 import com.trodev.scanhub.R;
 
@@ -43,6 +46,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.date.setText(models.getDate());
         holder.time.setText(models.getTime());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ProductQrFullActivity.class);
+                intent.putExtra("mDate", models.getMake_date());
+                intent.putExtra("eDate", models.getExpire_date());
+                intent.putExtra("pName", models.getProduct_name());
+                intent.putExtra("code", models.getProduct_info());
+                intent.putExtra("company", models.getCompany_name());
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -52,7 +70,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, info, date, time ;
+        private TextView name, info, date, time;
+        private CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             // Here its a Time & Date Section
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
+            cardView = itemView.findViewById(R.id.cardView);
 
         }
     }

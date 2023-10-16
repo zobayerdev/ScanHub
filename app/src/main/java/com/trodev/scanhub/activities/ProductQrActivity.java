@@ -184,6 +184,8 @@ public class ProductQrActivity extends AppCompatActivity {
         });
 
 
+
+
     }
 
     private void save_to_db() {
@@ -220,7 +222,7 @@ public class ProductQrActivity extends AppCompatActivity {
             String time = currentTime.format(calForTime.getTime());
 
             String Key = reference.push().getKey();
-            QRModels qrModels = new QRModels(make_date, expire_date, product_name, company_name, product_info, date, time, FirebaseAuth.getInstance().getCurrentUser().getUid());
+            QRModels qrModels = new QRModels(make_date, expire_date, company_name, product_name, product_info, date, time, FirebaseAuth.getInstance().getCurrentUser().getUid());
             reference.child(Key).setValue(qrModels);
             Toast.makeText(this, "save successful !!! please check your history dashboard", Toast.LENGTH_LONG).show();
 

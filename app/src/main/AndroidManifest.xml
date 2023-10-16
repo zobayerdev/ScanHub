@@ -29,15 +29,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ProductQrFullActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.WifiQrActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activities.SmsActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activities.ScanGalleryActivity"
             android:exported="false"
