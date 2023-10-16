@@ -10,9 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.trodev.scanhub.ProductQrFullActivity;
 import com.trodev.scanhub.R;
-import com.trodev.scanhub.SmsQrFullActivity;
+import com.trodev.scanhub.detail_activity.SmsQrFullActivity;
 import com.trodev.scanhub.models.SMSModels;
 
 import java.util.ArrayList;

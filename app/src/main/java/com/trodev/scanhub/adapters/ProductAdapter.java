@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.trodev.scanhub.ProductQrFullActivity;
+import com.trodev.scanhub.detail_activity.ProductQrFullActivity;
 import com.trodev.scanhub.models.QRModels;
 import com.trodev.scanhub.R;
 

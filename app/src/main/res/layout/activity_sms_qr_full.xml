@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="none"
-    tools:context=".SmsQrFullActivity">
+    tools:context=".detail_activity.SmsQrFullActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

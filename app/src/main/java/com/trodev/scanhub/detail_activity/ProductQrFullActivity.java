@@ -1,4 +1,4 @@
-package com.trodev.scanhub;
+package com.trodev.scanhub.detail_activity;
 
 import static android.content.ContentValues.TAG;
 
@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+
 import android.content.ContentValues;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -32,16 +33,17 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.trodev.scanhub.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class SmsQrFullActivity extends AppCompatActivity {
+public class ProductQrFullActivity extends AppCompatActivity {
 
-    TextView from_tv, to_tv, text_tv;
-    String from, to, text;
+    TextView making_date_tv, expire_date_tv, product_name_tv, product_code_tv, company_name_tv;
+    String makeTv, expireTv, nameTv, codeTv, companyTv;
     Button generate, qr_download, pdf_download;
     public final static int QRCodeWidth = 500;
     Bitmap card, qrimage;
@@ -53,20 +55,19 @@ public class SmsQrFullActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_qr_full);
+        setContentView(R.layout.activity_product_qr_full);
 
-        /*init*/
-        from_tv = findViewById(R.id.from_tv);
-        to_tv = findViewById(R.id.recevier_tv);
-        text_tv = findViewById(R.id.text_tv);
+        getSupportActionBar().setTitle("Product QR details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        from = getIntent().getStringExtra("mFrom");
-        to = getIntent().getStringExtra("mTo");
-        text = getIntent().getStringExtra("mText");
+        askPermissions();
 
-        from_tv.setText(from);
-        to_tv.setText(to);
-        text_tv.setText(text);
+        /*ini view*/
+        making_date_tv = findViewById(R.id.making_date_tv);
+        expire_date_tv = findViewById(R.id.expire_date_tv);
+        product_name_tv = findViewById(R.id.product_name_tv);
+        product_code_tv = findViewById(R.id.product_code_tv);
+        company_name_tv = findViewById(R.id.company_name_tv);
 
         /*init buttons*/
         // generate = findViewById(R.id.generate);
@@ -80,10 +81,21 @@ public class SmsQrFullActivity extends AppCompatActivity {
         infoLl = findViewById(R.id.infoLl);
         cardView = findViewById(R.id.cardView);
 
-        askPermissions();
+        makeTv = getIntent().getStringExtra("mDate");
+        expireTv = getIntent().getStringExtra("eDate");
+        nameTv = getIntent().getStringExtra("pName");
+        codeTv = getIntent().getStringExtra("code");
+        companyTv = getIntent().getStringExtra("company");
 
-        /*call method*/
-        create_qr();
+        /*set text on text views*/
+        making_date_tv.setText(makeTv);
+        expire_date_tv.setText(expireTv);
+        product_name_tv.setText(nameTv);
+        product_code_tv.setText(codeTv);
+        company_name_tv.setText(companyTv);
+
+        /*auto create qr image*/
+        make_QR();
 
         pdf_download.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,62 +121,10 @@ public class SmsQrFullActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
     }
 
-    private void create_qr() {
-        if (
-                from_tv.getText().toString().trim().length() + to_tv.getText().toString().length() + text_tv.getText().toString().length() == 0) {
-        } else {
-            try {
-                qrimage = textToImageEncode(
-                        "Manufacture Date:  " + from_tv.getText().toString() +
-                                "\nExpire Date:  " + to_tv.getText().toString().trim() +
-                                "\nProduct Name:  " + text_tv.getText().toString().trim());
-
-                qr_image.setImageBitmap(qrimage);
-
-                qr_download.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "product_qr_image"
-                                , null);
-                        Toast.makeText(SmsQrFullActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (WriterException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    private Bitmap textToImageEncode(String value) throws WriterException {
-        BitMatrix bitMatrix;
-        try {
-
-            bitMatrix = new MultiFormatWriter().encode(value, BarcodeFormat.DATA_MATRIX.QR_CODE, QRCodeWidth, QRCodeWidth, null);
-
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-
-        int bitMatrixWidth = bitMatrix.getWidth();
-        int bitMatrixHeight = bitMatrix.getHeight();
-
-        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
-        for (int y = 0; y < bitMatrixHeight; y++) {
-            int offSet = y * bitMatrixWidth;
-            for (int x = 0; x < bitMatrixWidth; x++) {
-                pixels[offSet + x] = bitMatrix.get(x, y) ? getResources().getColor(R.color.black) : getResources().getColor(R.color.white);
-            }
-        }
-        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
-        bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
-        return bitmap;
-    }
-
     /* ##################################################################### */
     /* ##################################################################### */
     /*method
-     * qr image downloader*/
+    * qr image downloader*/
     private Bitmap getBitmapFromUiView(View view) {
 
         //Define a bitmap with the same size as the view
@@ -186,7 +146,6 @@ public class SmsQrFullActivity extends AppCompatActivity {
         //return the bitmap
         return returnedBitmap;
     }
-
     private void saveBitmapImage(Bitmap card) {
 
         long timestamp = System.currentTimeMillis();
@@ -302,7 +261,7 @@ public class SmsQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "sms_qr.pdf";
+        String fileName = "product_qr.pdf";
 
         File filePath = new File(downloadsDir, fileName);
 
@@ -322,4 +281,69 @@ public class SmsQrFullActivity extends AppCompatActivity {
     }
 
 
+    /* ##################################################################### */
+    /* ##################################################################### */
+    /*method
+     * text to image encode method
+     * this method create a image get on text*/
+    private void make_QR() {
+        if (making_date_tv.getText().toString().trim().length() +
+                expire_date_tv.getText().toString().length() +
+                product_name_tv.getText().toString().length() +
+                product_code_tv.getText().toString().length() +
+                company_name_tv.getText().toString().length() == 0) {
+
+        } else {
+            try {
+                qrimage = textToImageEncode(
+                        "Manufacture Date:  " + making_date_tv.getText().toString() +
+                                "\nExpire Date:  " + expire_date_tv.getText().toString().trim() +
+                                "\nProduct Name:  " + product_name_tv.getText().toString().trim() +
+                                "\nProduct Code:  " + product_code_tv.getText().toString().trim() +
+                                "\nCompany Name:  " + company_name_tv.getText().toString().trim());
+                // + "\n\n\nMake by Altai Platforms"
+                qr_image.setImageBitmap(qrimage);
+
+                /*visibility button section*/
+                // download.setVisibility(View.VISIBLE);
+                // saveBtn.setVisibility(View.VISIBLE);
+                qr_download.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "product_qr_image"
+                                , null);
+                        Toast.makeText(ProductQrFullActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private Bitmap textToImageEncode(String value) throws WriterException {
+        BitMatrix bitMatrix;
+        try {
+
+            bitMatrix = new MultiFormatWriter().encode(value, BarcodeFormat.DATA_MATRIX.QR_CODE, QRCodeWidth, QRCodeWidth, null);
+
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+
+        int bitMatrixWidth = bitMatrix.getWidth();
+        int bitMatrixHeight = bitMatrix.getHeight();
+
+        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
+        for (int y = 0; y < bitMatrixHeight; y++) {
+            int offSet = y * bitMatrixWidth;
+            for (int x = 0; x < bitMatrixWidth; x++) {
+                pixels[offSet + x] = bitMatrix.get(x, y) ? getResources().getColor(R.color.black) : getResources().getColor(R.color.white);
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
+        bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
+        return bitmap;
+    }
 }

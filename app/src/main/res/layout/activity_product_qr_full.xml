@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="none"
-    tools:context=".ProductQrFullActivity">
+    tools:context=".detail_activity.ProductQrFullActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

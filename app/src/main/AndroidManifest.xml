@@ -29,10 +29,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
         <activity
-            android:name=".SmsQrFullActivity"
+            android:name=".detail_activity.SmsQrFullActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductQrFullActivity"
+            android:name=".detail_activity.ProductQrFullActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
