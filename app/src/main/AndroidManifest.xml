@@ -28,6 +28,10 @@
         android:theme="@style/Theme.ScanHub"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
+
+        <activity
+            android:name=".detail_activity.WifiQrFullActivity"
+            android:exported="false" />
         <activity
             android:name=".detail_activity.SmsQrFullActivity"
             android:exported="false" />

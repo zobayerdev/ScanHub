@@ -1,6 +1,7 @@
 package com.trodev.scanhub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.trodev.scanhub.R;
+import com.trodev.scanhub.detail_activity.WifiQrFullActivity;
 import com.trodev.scanhub.models.WIFIMModels;
 
 import java.util.ArrayList;
@@ -43,6 +45,20 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> 
         holder.time.setText(models.getTime());
         holder.date.setText(models.getDate());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, WifiQrFullActivity.class);
+                intent.putExtra("mName", models.getNet_name());
+                intent.putExtra("mPass", models.getPass());
+                intent.putExtra("mSecurity", models.getSecurity());
+                intent.putExtra("mType", models.getHidden_type());
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -52,6 +68,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, pass, date, time;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameTv);
