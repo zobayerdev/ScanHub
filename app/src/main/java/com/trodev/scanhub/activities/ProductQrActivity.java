@@ -40,8 +40,9 @@ public class ProductQrActivity extends AppCompatActivity {
     //define calender & date picker
     Calendar c;
     private DatePickerDialog.OnDateSetListener makeDate, expireDate;
-    public String make_date, expire_date, company_name, product_info, product_name;
     DatabaseReference reference;
+    public String make_date, expire_date, company_name, product_info, product_name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,9 +183,6 @@ public class ProductQrActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
     }
 

@@ -15,16 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.card.MaterialCardView;
+import com.trodev.scanhub.activities.EmailActivity;
+import com.trodev.scanhub.activities.LocationActivity;
 import com.trodev.scanhub.activities.ProductQrActivity;
 import com.trodev.scanhub.activities.ScanGalleryActivity;
 import com.trodev.scanhub.activities.ScannerActivity;
 import com.trodev.scanhub.activities.SmsActivity;
+import com.trodev.scanhub.activities.URLActivity;
 import com.trodev.scanhub.activities.WifiQrActivity;
 
 
 public class HomeFragment extends Fragment {
 
     MaterialCardView product_qr, message, wifi;
+    MaterialCardView email_qr, location_qr, url_qr;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,6 +44,9 @@ public class HomeFragment extends Fragment {
         product_qr = view.findViewById(R.id.product_qr);
         message = view.findViewById(R.id.message);
         wifi = view.findViewById(R.id.wifi);
+        email_qr = view.findViewById(R.id.email_qr);
+        location_qr = view.findViewById(R.id.location_qr);
+        url_qr = view.findViewById(R.id.url_qr);
 
 
         /*set on click listener*/
@@ -64,8 +71,42 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        email_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goto_email();
+            }
+        });
+
+        location_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goto_location();
+            }
+        });
+        url_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goto_url();
+            }
+        });
+
 
         return view;
+    }
+
+    private void goto_url() {
+        startActivity(new Intent(getContext(), URLActivity.class));
+    }
+
+    private void goto_location() {
+        startActivity(new Intent(getContext(), LocationActivity.class));
+    }
+
+    private void goto_email() {
+
+        startActivity(new Intent(getContext(), EmailActivity.class));
+
     }
 
     private void goto_wifi() {
@@ -106,8 +147,8 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(getContext(), ScannerActivity.class);
             startActivity(intent);
         } else if (itemId == R.id.gallery_item_scan) {
-             Intent intent = new Intent(getContext(), ScanGalleryActivity.class);
-             startActivity(intent);
+            Intent intent = new Intent(getContext(), ScanGalleryActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

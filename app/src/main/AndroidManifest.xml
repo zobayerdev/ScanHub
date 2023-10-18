@@ -17,6 +17,8 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -29,6 +31,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
 
+        <activity
+            android:name=".activities.URLActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmailActivity"
+            android:exported="false" />
         <activity
             android:name=".detail_activity.WifiQrFullActivity"
             android:exported="false" />
