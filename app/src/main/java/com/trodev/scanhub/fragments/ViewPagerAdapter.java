@@ -1,4 +1,4 @@
-package com.trodev.scanhub;
+package com.trodev.scanhub.fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,14 +22,20 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             return new ProductQrFragment();
         } else if (position == 1) {
             return new SmsQrFragment();
-        } else {
+        } else if (position == 2) {
             return new WifiQrFragment();
+        } else if (position == 3) {
+            return new EmailFragment();
+        } else if (position == 4) {
+            return new LocationFragment();
+        } else {
+            return new UrlFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 6;
     }
 
     @Nullable
@@ -40,8 +46,14 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             return "Product\nHistory";
         } else if (position == 1) {
             return "Sms\nHistory";
-        } else {
+        } else if (position == 2) {
             return "Wifi\nHistory";
+        } else if (position == 3) {
+            return "Email\nHistory";
+        } else if (position == 4) {
+            return "Location\nHistory";
+        } else {
+            return "URL\nHistory";
         }
 
     }

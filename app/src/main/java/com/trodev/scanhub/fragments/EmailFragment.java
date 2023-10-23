@@ -21,33 +21,36 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.trodev.scanhub.R;
-import com.trodev.scanhub.adapters.SMSAdapter;
-import com.trodev.scanhub.models.SMSModels;
+import com.trodev.scanhub.adapters.EmailAdapter;
+import com.trodev.scanhub.models.EmailModel;
 
 import java.util.ArrayList;
 
-public class SmsQrFragment extends Fragment {
-    RecyclerView recyclerView;
+
+public class EmailFragment extends Fragment {
+
+    private RecyclerView recyclerView;
     DatabaseReference reference;
-    ArrayList<SMSModels> list;
-    SMSAdapter adapter;
+    ArrayList<EmailModel> list;
+    EmailAdapter adapter;
     LottieAnimationView animationView;
-    public SmsQrFragment() {
+
+
+    public EmailFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sms_qr, container, false);
+        View view =  inflater.inflate(R.layout.fragment_email, container, false);
 
-        /*database location*/
+
         reference = FirebaseDatabase.getInstance().getReference("QR_DB");
 
         /*init views*/
-        recyclerView = view.findViewById(R.id.recyclerRv);
+        recyclerView = view.findViewById(R.id.emailRv);
         animationView = view.findViewById(R.id.animationView);
         animationView.loop(true);
 
@@ -59,11 +62,10 @@ public class SmsQrFragment extends Fragment {
     }
 
     private void load_data() {
-        Query query = reference.child("sms_qr").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        Query query = reference.child("email_qr").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 list = new ArrayList<>();
                 if (!dataSnapshot.exists()) {
                     animationView.setVisibility(View.VISIBLE);
@@ -72,15 +74,15 @@ public class SmsQrFragment extends Fragment {
                     recyclerView.setVisibility(View.VISIBLE);
                     animationView.setVisibility(View.GONE);
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        SMSModels data = snapshot.getValue(SMSModels.class);
+                        EmailModel data = snapshot.getValue(EmailModel.class);
                         list.add(0, data);
 
                     }
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new SMSAdapter(getContext(),  list, "sms_qr");
+                    adapter = new EmailAdapter(getContext(), list, "email_qr");
                     recyclerView.setAdapter(adapter);
-                    Toast.makeText(getContext(), "sms qr data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "e-mail data found", Toast.LENGTH_SHORT).show();
                 }
 
             }

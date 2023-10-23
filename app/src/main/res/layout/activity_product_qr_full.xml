@@ -28,126 +28,128 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Manufacture Date: "
-                            android:textColor="@color/color_6" />
-
-                        <TextView
-                            android:id="@+id/making_date_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="12/09/20233"
-                            android:textColor="@color/color_6" />
-
-                    </LinearLayout>
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Expire Date: "
-                            android:textColor="@color/color_6" />
 
-                        <TextView
-                            android:id="@+id/expire_date_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="12/09/20233"
-                            android:textColor="@color/color_6" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Manufacture Date: "
+                                android:textColor="@color/color_6" />
+
+                            <TextView
+                                android:id="@+id/making_date_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="12/09/20233"
+                                android:textColor="@color/color_6" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Expire Date: "
+                                android:textColor="@color/color_6" />
+
+                            <TextView
+                                android:id="@+id/expire_date_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="12/09/20233"
+                                android:textColor="@color/color_6" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Product name "
+                                android:textColor="@color/color_6" />
+
+                            <TextView
+                                android:id="@+id/product_name_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="soup"
+                                android:textColor="@color/color_6" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Product code: "
+                                android:textColor="@color/color_6" />
+
+                            <TextView
+                                android:id="@+id/product_code_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="soup3456778#@"
+                                android:textColor="@color/color_6" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Company name: "
+                                android:textColor="@color/color_6" />
+
+                            <TextView
+                                android:id="@+id/company_name_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="Trodev"
+                                android:textColor="@color/color_6" />
+                        </LinearLayout>
+
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Product name "
-                            android:textColor="@color/color_6" />
-
-                        <TextView
-                            android:id="@+id/product_name_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="soup"
-                            android:textColor="@color/color_6" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Product code: "
-                            android:textColor="@color/color_6" />
-
-                        <TextView
-                            android:id="@+id/product_code_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="soup3456778#@"
-                            android:textColor="@color/color_6" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Company name: "
-                            android:textColor="@color/color_6" />
-
-                        <TextView
-                            android:id="@+id/company_name_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Trodev"
-                            android:textColor="@color/color_6" />
-                    </LinearLayout>
-
+                    
                 </LinearLayout>
 
                 <ImageView
@@ -157,8 +159,6 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/ic_product" />
-
-            </LinearLayout>
 
             </LinearLayout>
 
@@ -200,16 +200,16 @@
                     android:textAllCaps="false"
                     android:textSize="10sp" />
 
-<!--                <Button
-                    android:id="@+id/generate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="generate qr"
-                    android:textAllCaps="false"
-                    android:textSize="10sp" />-->
+                <!--                <Button
+                                    android:id="@+id/generate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:text="generate qr"
+                                    android:textAllCaps="false"
+                                    android:textSize="10sp" />-->
 
             </LinearLayout>
 

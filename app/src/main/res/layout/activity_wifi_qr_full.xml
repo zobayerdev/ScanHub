@@ -128,15 +128,16 @@
 
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/qr_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="119dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_product" />
 
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/qr_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_product" />
 
             </LinearLayout>
 

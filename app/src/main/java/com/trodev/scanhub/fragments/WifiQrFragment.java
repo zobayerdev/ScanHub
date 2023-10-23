@@ -77,7 +77,7 @@ public class WifiQrFragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new WifiAdapter(getContext(),  list, "wifi_qr");
                     recyclerView.setAdapter(adapter);
-                    Toast.makeText(getContext(), "data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "wifi qr data found", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

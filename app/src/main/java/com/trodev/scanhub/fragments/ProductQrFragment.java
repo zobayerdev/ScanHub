@@ -80,7 +80,7 @@ public class ProductQrFragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new ProductAdapter(getContext(), list, "product_qr");
                     recyclerView.setAdapter(adapter);
-                    Toast.makeText(getContext(), "data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "product qr data found", Toast.LENGTH_SHORT).show();
                 }
 
             }

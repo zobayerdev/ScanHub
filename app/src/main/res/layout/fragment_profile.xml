@@ -22,17 +22,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-<!--               <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:padding="1dp"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/color_7" />-->
+                <!--               <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:padding="1dp"
+                                    android:src="@drawable/ic_back"
+                                    app:tint="@color/color_7" />-->
 
                 <ImageView
                     android:id="@+id/logout_btn"
@@ -363,7 +363,16 @@
             android:src="@drawable/ic_right_back"
             app:tint="@color/color_6" />
 
-
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:text="© 2021-2023 all right reserved Trodev"
+        android:textColor="@color/color_6"
+        android:textSize="10sp" />
 
 </LinearLayout>

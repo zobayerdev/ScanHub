@@ -39,10 +39,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class WifiQrFullActivity extends AppCompatActivity {
+public class EmailQrFullActivity extends AppCompatActivity {
 
-    String name, pass, security, type;
-    TextView nameTv, passTv, securityTv, typeTv;
+    TextView from_tv, to_tv, text_tv;
+    String from, to, text;
     Button generate, qr_download, pdf_download;
     public final static int QRCodeWidth = 500;
     Bitmap card, qrimage;
@@ -54,23 +54,20 @@ public class WifiQrFullActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wifi_qr_full);
+        setContentView(R.layout.activity_email_qr_full);
 
         /*init*/
-        nameTv = findViewById(R.id.nameTv);
-        passTv = findViewById(R.id.passTv);
-        securityTv = findViewById(R.id.securityTv);
-        typeTv = findViewById(R.id.typeTv);
+        from_tv = findViewById(R.id.from_tv);
+        to_tv = findViewById(R.id.recevier_tv);
+        text_tv = findViewById(R.id.text_tv);
 
-        name = getIntent().getStringExtra("mName");
-        pass = getIntent().getStringExtra("mPass");
-        security = getIntent().getStringExtra("mSecurity");
-        type = getIntent().getStringExtra("mType");
+        from = getIntent().getStringExtra("mFrom");
+        to = getIntent().getStringExtra("mTo");
+        text = getIntent().getStringExtra("mText");
 
-        nameTv.setText(name);
-        passTv.setText(pass);
-        securityTv.setText(security);
-        typeTv.setText(type);
+        from_tv.setText(from);
+        to_tv.setText(to);
+        text_tv.setText(text);
 
         /*init buttons*/
         // generate = findViewById(R.id.generate);
@@ -115,23 +112,22 @@ public class WifiQrFullActivity extends AppCompatActivity {
 
     private void create_qr() {
         if (
-                nameTv.getText().toString().trim().length() + passTv.getText().toString().length() + securityTv.getText().toString().length() + typeTv.getText().toString().length() == 0) {
+                from_tv.getText().toString().trim().length() + to_tv.getText().toString().length() + text_tv.getText().toString().length() == 0) {
         } else {
             try {
                 qrimage = textToImageEncode(
-                        "Network name:  " + nameTv.getText().toString() +
-                                "\nPassword:  " + passTv.getText().toString().trim() +
-                                "\nSecurity Type:  " + securityTv.getText().toString().trim() +
-                                "\nHidden Type:  " + typeTv.getText().toString().trim());
+                        "Manufacture Date:  " + from_tv.getText().toString() +
+                                "\nExpire Date:  " + to_tv.getText().toString().trim() +
+                                "\nProduct Name:  " + text_tv.getText().toString().trim());
 
                 qr_image.setImageBitmap(qrimage);
 
                 qr_download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "wifi_qr_image"
+                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "product_qr_image"
                                 , null);
-                        Toast.makeText(WifiQrFullActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EmailQrFullActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (WriterException e) {
@@ -261,8 +257,8 @@ public class WifiQrFullActivity extends AppCompatActivity {
 
 
     /* ##################################################################### */
-    /* ##################################################################### */
     /*qr pdf file*/
+    /* ##################################################################### */
     private void make_pdf() {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -309,7 +305,7 @@ public class WifiQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "wifi.pdf";
+        String fileName = "email.pdf";
 
         File filePath = new File(downloadsDir, fileName);
 
@@ -327,5 +323,9 @@ public class WifiQrFullActivity extends AppCompatActivity {
         }
 
     }
+
+    /* ##################################################################### */
+    /*qr pdf file*/
+    /* ##################################################################### */
 
 }

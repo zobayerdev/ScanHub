@@ -16,8 +16,7 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +29,9 @@
         android:theme="@style/Theme.ScanHub"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
-
+        <activity
+            android:name=".detail_activity.EmailQrFullActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.URLActivity"
             android:exported="false" />

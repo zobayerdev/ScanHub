@@ -179,9 +179,10 @@ public class ProductQrFullActivity extends AppCompatActivity {
                     values.put(MediaStore.Images.Media.IS_PENDING, false);
                     getContentResolver().update(uri, values, null, null);
 
-                    Toast.makeText(this, "Saved...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "card save successful...", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Log.e(TAG, "saveToGallery: ", e);
+                    Toast.makeText(this, "card save un-successful...", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -261,7 +262,7 @@ public class ProductQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "product_qr.pdf";
+        String fileName = "product.pdf";
 
         File filePath = new File(downloadsDir, fileName);
 
@@ -272,10 +273,10 @@ public class ProductQrFullActivity extends AppCompatActivity {
             document.close();
             fos.close();
             // PDF conversion successful
-            Toast.makeText(this, "PDF download successful", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "pdf download successful", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "PDF download un-successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "pdf download un-successful", Toast.LENGTH_SHORT).show();
         }
 
     }

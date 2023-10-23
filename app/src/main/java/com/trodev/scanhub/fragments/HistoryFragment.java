@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.trodev.scanhub.R;
-import com.trodev.scanhub.ViewPagerAdapter;
 
 public class HistoryFragment extends Fragment {
     TabLayout tab;

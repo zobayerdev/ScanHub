@@ -44,6 +44,7 @@ public class SmsQrFullActivity extends AppCompatActivity {
     TextView from_tv, to_tv, text_tv;
     String from, to, text;
     Button generate, qr_download, pdf_download;
+
     public final static int QRCodeWidth = 500;
     Bitmap card, qrimage;
     ImageView qr_image;
@@ -125,8 +126,7 @@ public class SmsQrFullActivity extends AppCompatActivity {
                 qr_download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "product_qr_image"
-                                , null);
+                        MediaStore.Images.Media.insertImage(getContentResolver(), qrimage, "product_qr_image", null);
                         Toast.makeText(SmsQrFullActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -221,9 +221,10 @@ public class SmsQrFullActivity extends AppCompatActivity {
                     values.put(MediaStore.Images.Media.IS_PENDING, false);
                     getContentResolver().update(uri, values, null, null);
 
-                    Toast.makeText(this, "Saved...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "card download successful...", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Log.e(TAG, "saveToGallery: ", e);
+                    Toast.makeText(this, "card download un-successful...", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -246,9 +247,10 @@ public class SmsQrFullActivity extends AppCompatActivity {
                 values.put(MediaStore.Images.Media.DATA, imageFile.getAbsolutePath());
                 getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
-                Toast.makeText(this, "Saved...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "card download successful...", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Log.e(TAG, "saveToGallery: ", e);
+                Toast.makeText(this, "card download un-successful...", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -266,8 +268,8 @@ public class SmsQrFullActivity extends AppCompatActivity {
         } else
             this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        cardView.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
+        cardView.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.UNSPECIFIED));
 
         Log.d("my log", "Width Now " + cardView.getMeasuredWidth());
 
@@ -303,7 +305,7 @@ public class SmsQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "sms_qr.pdf";
+        String fileName = "sms.pdf";
 
         File filePath = new File(downloadsDir, fileName);
 
@@ -314,10 +316,10 @@ public class SmsQrFullActivity extends AppCompatActivity {
             document.close();
             fos.close();
             // PDF conversion successful
-            Toast.makeText(this, "PDF download successful", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "pdf download successful", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "PDF download un-successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "pdf download un-successful", Toast.LENGTH_SHORT).show();
         }
 
     }
