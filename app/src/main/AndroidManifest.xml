@@ -30,6 +30,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
         <activity
+            android:name=".UserListActivity"
+            android:exported="false" />
+        <activity
             android:name=".detail_activity.EmailQrFullActivity"
             android:exported="false" />
         <activity

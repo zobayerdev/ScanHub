@@ -21,7 +21,7 @@ import com.trodev.scanhub.MainActivity;
 import com.trodev.scanhub.R;
 import com.trodev.scanhub.models.User;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MaterialButton login;
     private EditText nameET, mobileET, emailET, passET;
@@ -56,8 +56,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         int itemId = view.getId();
 
-        if(itemId == R.id.log_Btn)
-        {
+        if (itemId == R.id.log_Btn) {
             registarUser();
         }
 
@@ -120,8 +119,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful())
-                                            {
+                                            if (task.isSuccessful()) {
                                                 progressBar.setVisibility(View.GONE);
                                                 Toast.makeText(SignupActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(SignupActivity.this, MainActivity.class));

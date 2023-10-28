@@ -1,6 +1,7 @@
 package com.trodev.scanhub.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trodev.scanhub.R;
+import com.trodev.scanhub.UserListActivity;
 import com.trodev.scanhub.activities.LoginActivity;
-import com.trodev.scanhub.activities.ProfileActivity;
 import com.trodev.scanhub.models.User;
 
 public class ProfileFragment extends Fragment {
@@ -32,23 +33,30 @@ public class ProfileFragment extends Fragment {
     private DatabaseReference reference;
     private String userID;
     ImageView logout;
+
+    /*linear layout declear*/
+    LinearLayout contactLl, console_ll, userLl;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-        final TextView nameET =view. findViewById(R.id.nameEt);
+        final TextView nameET = view.findViewById(R.id.nameEt);
         final TextView emailET = view.findViewById(R.id.emailTv);
-        final TextView numberET =view. findViewById(R.id.mobileTv);
-        final TextView passEt =view. findViewById(R.id.passTv);
+        final TextView numberET = view.findViewById(R.id.mobileTv);
+        final TextView passEt = view.findViewById(R.id.passTv);
+
+
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,12 +68,12 @@ public class ProfileFragment extends Fragment {
                     String pass = userProfile.pass;
 
                     nameET.setText(uname);
-                    emailET.setText("E-mail: "+email);
-                    numberET.setText("Mobile: "+num);
-                    passEt.setText("Password: "+pass);
+                    emailET.setText("E-mail: " + email);
+                    numberET.setText("Mobile: " + num);
+                    passEt.setText("Password: " + pass);
 
                     /*toast sms*/
-                    Toast.makeText(getActivity(), uname+" your data found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), uname + " your data found", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -87,6 +95,66 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        /*init views*/
+        contactLl = view.findViewById(R.id.contactLl);
+        console_ll = view.findViewById(R.id.console_ll);
+        userLl = view.findViewById(R.id.userLl);
+
+        contactLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                go_to_email();
+            }
+        });
+
+        console_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                go_to_console();
+            }
+        });
+
+        userLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                go_to_user();
+            }
+        });
+
         return view;
+    }
+
+    private void go_to_user() {
+
+        startActivity(new Intent(getContext(), UserListActivity.class));
+
+    }
+
+
+    private void go_to_email() {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        String[] recipients = {"zobayer.dev@gmail.com"};
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Contact for");
+        intent.putExtra(Intent.EXTRA_TEXT, "Assalamualaikum, ");
+        intent.putExtra(Intent.EXTRA_CC, "ceo.trodev@gmail.com");
+        intent.setType("text/html");
+        intent.setPackage("com.google.android.gm");
+        startActivity(Intent.createChooser(intent, "Send mail"));
+
+    }
+
+    private void go_to_console() {
+
+        // on below line we are creating the uri to open google play store to open google maps application
+        Uri uri = Uri.parse("https://play.google.com/store/apps/dev?id=6580660399707616800");
+        // initializing intent with action view.
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        // set flags on below line.
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // on below line we are starting the activity.
+        startActivity(i);
+
     }
 }

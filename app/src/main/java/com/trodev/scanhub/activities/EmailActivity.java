@@ -134,7 +134,7 @@ public class EmailActivity extends AppCompatActivity {
         if (email_from.isEmpty()) {
             fromET.setError("Please fill sender email");
         } else if (email_to.isEmpty()) {
-            toET.setError("please fill recevier email");
+            toET.setError("please fill receiver email");
         } else if (email_sms.isEmpty()) {
             smsET.setError("please fill sms");
         } else {
@@ -154,7 +154,13 @@ public class EmailActivity extends AppCompatActivity {
 
             if (Key != null) {
                 EmailModel emailModel = new EmailModel(email_from, email_to, email_sms, date, time, FirebaseAuth.getInstance().getCurrentUser().getUid());
-                reference.child(Key).setValue(emailModel);
+
+                /*these data save on new uid and also user id*/
+                // reference.child(Key).setValue(emailModel);
+
+                /*these data save on user id*/
+                reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(emailModel);
+
                 Toast.makeText(this, "save successful", Toast.LENGTH_LONG).show();
             }
             else
