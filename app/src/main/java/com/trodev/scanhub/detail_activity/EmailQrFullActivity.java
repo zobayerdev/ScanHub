@@ -111,8 +111,7 @@ public class EmailQrFullActivity extends AppCompatActivity {
     }
 
     private void create_qr() {
-        if (
-                from_tv.getText().toString().trim().length() + to_tv.getText().toString().length() + text_tv.getText().toString().length() == 0) {
+        if (from_tv.getText().toString().trim().length() + to_tv.getText().toString().length() + text_tv.getText().toString().length() == 0) {
         } else {
             try {
                 qrimage = textToImageEncode(

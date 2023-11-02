@@ -62,6 +62,7 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
                 if (userProfile != null) {
+
                     String uname = userProfile.uname;
                     String email = userProfile.email;
                     String num = userProfile.num;

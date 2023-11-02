@@ -62,6 +62,7 @@ public class EmailFragment extends Fragment {
     }
 
     private void load_data() {
+
         Query query = reference.child("email_qr").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
