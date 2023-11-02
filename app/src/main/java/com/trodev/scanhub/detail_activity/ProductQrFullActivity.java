@@ -262,7 +262,10 @@ public class ProductQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "product.pdf";
+        /*time wise print*/
+        /*eikhane millisecond ta niye lopping vabe pdf banacche*/
+        long timestamps = System.currentTimeMillis();
+        String fileName = "Product_" + timestamps + ".pdf";
 
         File filePath = new File(downloadsDir, fileName);
 

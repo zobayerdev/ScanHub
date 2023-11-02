@@ -309,7 +309,10 @@ public class WifiQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "wifi.pdf";
+        /*time wise print*/
+        /*eikhane millisecond ta niye lopping vabe pdf banacche*/
+        long timestamps = System.currentTimeMillis();
+        String fileName = "wifi_" + timestamps + ".pdf";
 
         File filePath = new File(downloadsDir, fileName);
 

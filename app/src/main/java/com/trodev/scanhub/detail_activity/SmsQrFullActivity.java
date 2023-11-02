@@ -305,7 +305,10 @@ public class SmsQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "sms.pdf";
+        /*time wise print*/
+        /*eikhane millisecond ta niye lopping vabe pdf banacche*/
+        long timestamps = System.currentTimeMillis();
+        String fileName = "sms_" + timestamps + ".pdf";
 
         File filePath = new File(downloadsDir, fileName);
 

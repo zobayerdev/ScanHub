@@ -262,6 +262,7 @@ public class EmailQrFullActivity extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             this.getDisplay().getRealMetrics(displayMetrics);
         } else
@@ -304,7 +305,10 @@ public class EmailQrFullActivity extends AppCompatActivity {
         // Specify the path and filename of the output PDF file
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        String fileName = "email.pdf";
+        /*time wise print*/
+        /*eikhane millisecond ta niye lopping vabe pdf banacche*/
+        long timestamps = System.currentTimeMillis();
+        String fileName = "Email_" + timestamps + ".pdf";
 
         File filePath = new File(downloadsDir, fileName);
 

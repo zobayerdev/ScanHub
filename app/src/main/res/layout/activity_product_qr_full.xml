@@ -185,7 +185,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="qr download"
+                    android:text="Card download"
                     android:textAllCaps="false"
                     android:textSize="10sp" />
 
@@ -196,7 +196,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="card download"
+                    android:text="PDF download"
                     android:textAllCaps="false"
                     android:textSize="10sp" />
 
